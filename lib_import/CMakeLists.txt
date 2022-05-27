@@ -7,8 +7,10 @@ find_package ( Foo )
 
 message ( STATUS "Foo_FOUND = ${Foo_FOUND}" )
 message ( STATUS "Foo_LIBRARIES = ${Foo_LIBRARIES}" )
+message ( STATUS "FOO_HEADERS = ${Foo_INCLUDE_DIR}" )
 message ( STATUS "PROJECT_NAME = ${PROJECT_NAME}" )
 
+# FooSpace::dep;FooSpace::foo;FooSpace::bar
 add_executable ( ${PROJECT_NAME} main.cpp )
 target_link_libraries ( ${PROJECT_NAME}  PRIVATE ${Foo_LIBRARIES} )
 target_include_directories( ${PROJECT_NAME}  PRIVATE ${Foo_INCLUDE_DIR} )

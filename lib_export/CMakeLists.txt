@@ -16,11 +16,13 @@ set_target_properties ( ${DEP_LIB_NAME} PROPERTIES PUBLIC_HEADER ${CMAKE_CURRENT
 
 ### foo lib
 add_library ( ${FOO_LIB_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/foo.cpp )
+target_link_libraries ( ${FOO_LIB_NAME} ${DEP_LIB_NAME} )
 target_include_directories ( ${FOO_LIB_NAME} PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set_target_properties ( ${FOO_LIB_NAME} PROPERTIES PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/foo.h )
 
 ### bar lib
 add_library ( ${BAR_LIB_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/bar.cpp )
+target_link_libraries ( ${BAR_LIB_NAME} ${FOO_LIB_NAME} )
 target_include_directories ( ${BAR_LIB_NAME} PRIVATE  ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set_target_properties ( ${BAR_LIB_NAME} PROPERTIES PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/include/bar.h )
 
